@@ -41,6 +41,102 @@ class DatabaseSeeder extends Seeder
                     'updated_at' => new \DateTime('2026-02-09 11:00:00'),
                 ]);
 
+                // Insert Pierre Martin - même préférences que John
+                DB::table('users')->insert([
+                    'id' => 3,
+                    'first_name' => 'Pierre',
+                    'last_name' => 'Martin',
+                    'username' => 'pierre_martin',
+                    'email' => 'pierre.martin@example.com',
+                    'password' => Hash::make('password'),
+                    'biography' => "Hello i'm Pierre",
+                    'created_at' => new \DateTime('2026-02-09 13:00:00'),
+                    'updated_at' => new \DateTime('2026-02-09 13:00:00'),
+                ]);
+
+                // Insert points for each user
+                DB::table('points')->insert([
+                    ['user_id' => 1, 'points' => 5, 'created_at' => new \DateTime('2026-02-09 10:00:00'), 'updated_at' => new \DateTime('2026-02-09 10:00:00')],
+                    ['user_id' => 2, 'points' => 5, 'created_at' => new \DateTime('2026-02-09 11:00:00'), 'updated_at' => new \DateTime('2026-02-09 11:00:00')],
+                    ['user_id' => 3, 'points' => 5, 'created_at' => new \DateTime('2026-02-09 13:00:00'), 'updated_at' => new \DateTime('2026-02-09 13:00:00')],
+                ]);
+
+                // Insert 6 questions
+                DB::table('questions')->insert([
+                    [
+                        'question' => 'Milk before or after cereales?',
+                        'option_a' => 'Milk before',
+                        'option_b' => 'Milk after',
+                        'created_at' => new \DateTime('2026-02-09 10:00:00'),
+                        'updated_at' => new \DateTime('2026-02-09 10:00:00'),
+                    ],
+                    [
+                        'question' => 'Shower on evening or on morning?',
+                        'option_a' => 'Evening',
+                        'option_b' => 'Morning',
+                        'created_at' => new \DateTime('2026-02-09 10:00:00'),
+                        'updated_at' => new \DateTime('2026-02-09 10:00:00'),
+                    ],
+                    [
+                        'question' => 'More mountains or beach?',
+                        'option_a' => 'Mountains',
+                        'option_b' => 'Beach',
+                        'created_at' => new \DateTime('2026-02-09 10:00:00'),
+                        'updated_at' => new \DateTime('2026-02-09 10:00:00'),
+                    ],
+                    [
+                        'question' => 'Are you more homebody or be outside?',
+                        'option_a' => 'Homebody',
+                        'option_b' => 'Be outside',
+                        'created_at' => new \DateTime('2026-02-09 10:00:00'),
+                        'updated_at' => new \DateTime('2026-02-09 10:00:00'),
+                    ],
+                    [
+                        'question' => 'Do you prefer Windows or Mac?',
+                        'option_a' => 'Windows',
+                        'option_b' => 'Mac',
+                        'created_at' => new \DateTime('2026-02-09 10:00:00'),
+                        'updated_at' => new \DateTime('2026-02-09 10:00:00'),
+                    ],
+                    [
+                        'question' => 'Do you validate tap shoes and socks?',
+                        'option_a' => 'Yes',
+                        'option_b' => 'No',
+                        'created_at' => new \DateTime('2026-02-09 10:00:00'),
+                        'updated_at' => new \DateTime('2026-02-09 10:00:00'),
+                    ],
+                ]);
+
+                // John's answers (a, b, a, b, a, b)
+                DB::table('user_answers')->insert([
+                    ['user_id' => 1, 'question_id' => 1, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
+                    ['user_id' => 1, 'question_id' => 2, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
+                    ['user_id' => 1, 'question_id' => 3, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
+                    ['user_id' => 1, 'question_id' => 4, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
+                    ['user_id' => 1, 'question_id' => 5, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
+                    ['user_id' => 1, 'question_id' => 6, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
+                ]);
+
+                // Jane's answers (b, a, b, a, b, a) - différentes de John
+                DB::table('user_answers')->insert([
+                    ['user_id' => 2, 'question_id' => 1, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
+                    ['user_id' => 2, 'question_id' => 2, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
+                    ['user_id' => 2, 'question_id' => 3, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
+                    ['user_id' => 2, 'question_id' => 4, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
+                    ['user_id' => 2, 'question_id' => 5, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
+                    ['user_id' => 2, 'question_id' => 6, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
+                ]);
+
+                // Pierre's answers - IDENTIQUES à John (a, b, a, b, a, b)
+                DB::table('user_answers')->insert([
+                    ['user_id' => 3, 'question_id' => 1, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
+                    ['user_id' => 3, 'question_id' => 2, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
+                    ['user_id' => 3, 'question_id' => 3, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
+                    ['user_id' => 3, 'question_id' => 4, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
+                    ['user_id' => 3, 'question_id' => 5, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
+                    ['user_id' => 3, 'question_id' => 6, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
+                ]);
+
                 // Insert some posts for John Doe
                 DB::table('posts')->insert([
                     [
