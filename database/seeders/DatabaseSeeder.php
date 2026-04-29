@@ -54,13 +54,6 @@ class DatabaseSeeder extends Seeder
                     'updated_at' => new \DateTime('2026-02-09 13:00:00'),
                 ]);
 
-                // Insert points for each user
-                DB::table('points')->insert([
-                    ['user_id' => 1, 'points' => 5, 'created_at' => new \DateTime('2026-02-09 10:00:00'), 'updated_at' => new \DateTime('2026-02-09 10:00:00')],
-                    ['user_id' => 2, 'points' => 5, 'created_at' => new \DateTime('2026-02-09 11:00:00'), 'updated_at' => new \DateTime('2026-02-09 11:00:00')],
-                    ['user_id' => 3, 'points' => 5, 'created_at' => new \DateTime('2026-02-09 13:00:00'), 'updated_at' => new \DateTime('2026-02-09 13:00:00')],
-                ]);
-
                 // Insert 6 questions
                 DB::table('questions')->insert([
                     [
