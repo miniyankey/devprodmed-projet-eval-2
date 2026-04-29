@@ -3,6 +3,23 @@
 declare(strict_types=1);
 
 return [
+    'profiles' => [
+        'like' => 'Liker',
+        'view_profile' => 'Voir le profil',
+        'index' => [
+            'title' => 'Profils compatibles',
+            'description' => 'Utilisateurs ayant les mêmes réponses que vous sur :app_name',
+            'empty' => 'Aucun profil compatible pour le moment.',
+        ],
+    ],
+    'matches' => [
+        'unmatch' => 'Unmatch',
+        'index' => [
+            'title' => 'Mes matches',
+            'description' => 'Vos connexions mutuelles sur :app_name',
+            'empty' => 'Aucun match pour le moment. Allez liker des profils !',
+        ],
+    ],
     'home' => [
         'title' => 'Accueil',
         'description' => "Page d'accueil du réseau social.",

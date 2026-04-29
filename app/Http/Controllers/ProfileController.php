@@ -23,7 +23,7 @@ class ProfileController extends Controller
             ->with(['user', 'likes'])
             ->get();
 
-        return view('profile', ['user' => $user, 'posts' => $posts]);
+        return view('profiles.profile', ['user' => $user, 'posts' => $posts]);
     }
 
     /**
