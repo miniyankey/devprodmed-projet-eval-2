@@ -18,7 +18,7 @@ class UserLikeController extends Controller
 
         // Empêche de se liker soi-même
         if ($user->id === $userLiked->id) {
-            return redirect("/@$username")->with('error', 'Cannot like yourself');
+            return redirect("/");
         }
 
         // Vérifie la compatibilité des réponses
@@ -32,7 +32,7 @@ class UserLikeController extends Controller
         $commonQuestions = $userAnswers->intersectByKeys($likedUserAnswers);
 
         if ($commonQuestions->isEmpty()) {
-            return redirect("/@$username")->with('error', 'No common questions answered');
+            return redirect("/");
         }
 
         // Vérifie que toutes les réponses communes sont identiques
@@ -41,7 +41,7 @@ class UserLikeController extends Controller
         });
 
         if (! $isCompatible) {
-            return redirect("/@$username")->with('error', 'Answers are not compatible');
+            return redirect("/");
         }
 
         // Like / Unlike
