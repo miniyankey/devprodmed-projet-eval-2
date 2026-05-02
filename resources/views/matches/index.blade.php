@@ -40,9 +40,9 @@
                             class="px-4 py-2 border border-teal-600 dark:border-purple-900 text-teal-600 dark:text-purple-400 rounded-md hover:bg-teal-50 dark:hover:bg-slate-700 text-sm">
                             {{ __('ui.profiles.view_profile') }}
                         </a>
-                        <form method="POST" action="{{ url('/matches/' . $match->username) }}">
+                        <form method="POST" action="{{ url('/users/' . $match->username . '/like') }}">
                             @csrf
-                            @method('DELETE')
+                            @method('POST')
                             <button type="submit"
                                 class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700 text-sm">
                                 {{ __('ui.matches.unmatch') }}

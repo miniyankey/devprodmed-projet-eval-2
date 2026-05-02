@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 return [
     'profiles' => [
+        'name' => 'Rencontrer des personnes',
         'like' => 'Liker',
         'view_profile' => 'Voir le profil',
         'index' => [
