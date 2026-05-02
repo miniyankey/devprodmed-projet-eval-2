@@ -31,9 +31,13 @@
                         {{ __('ui.posts.index.title') }}
                     </a>
                   @auth
-                    <a href="{{ url('/welcome') }}"
+                    <a href="{{ url('/profiles') }}"
                         class="block bg-teal-700 dark:bg-purple-900 px-3 py-1 rounded-md hover:bg-teal-800 dark:hover:bg-purple-800">
-                        {{ __('ui.welcome.name') }}
+                        {{ __('ui.profiles.name') }}
+                    </a>
+                    <a href="{{ url('/matches') }}"
+                        class="block bg-teal-700 dark:bg-purple-900 px-3 py-1 rounded-md hover:bg-teal-800 dark:hover:bg-purple-800">
+                        {{ __('ui.matches.index.title') }}
                     </a>
                   @endauth
                 </div>
