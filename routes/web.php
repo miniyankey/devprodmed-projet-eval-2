@@ -2,15 +2,17 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\MatchController;
 use App\Http\Controllers\MyProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserAnswerController;
+use App\Http\Controllers\UserLikeController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $posts = Post::orderBy('created_at', 'desc')->with('user')->with('likes')->limit(3)->get();
-
     return view('home', ['posts' => $posts]);
 });
 
@@ -34,6 +36,24 @@ Route::controller(AuthController::class)->group(function () {
     Route::post('/auth/login', 'login');
     Route::post('/auth/logout', 'logout')->middleware('auth');
 });
+
 Route::get('/welcome', function () {
     return view('welcome');
-})->middleware("auth");
+})->middleware('auth');
+
+// Nouvelles routes — auth requise
+Route::middleware('auth')->group(function () {
+    // Réponses aux questions
+    Route::get('/questions', [UserAnswerController::class, 'index']);
+    Route::post('/questions', [UserAnswerController::class, 'store']);
+
+    // Profils compatibles
+    Route::get('/profiles', [ProfileController::class, 'index']);
+
+    // Like / Unlike depuis la page profil
+    Route::post('/users/{username}/like', [UserLikeController::class, 'store'])
+        ->where('username', '[A-Za-z0-9-_]+');
+
+    // Matches
+    Route::get('/matches', [MatchController::class, 'index']);
+});
