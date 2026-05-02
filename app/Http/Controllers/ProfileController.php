@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 
+
 class ProfileController extends Controller
 {
     /**
@@ -37,7 +38,7 @@ class ProfileController extends Controller
             ->pluck('answer', 'question_id');
 
         if ($userAnswers->isEmpty()) {
-            return view('profiles.index', ['profiles' => collect()]);
+            return redirect("/questions");
         }
 
         $alreadyLikedIds = $user->likedUsers()->pluck('users.id');

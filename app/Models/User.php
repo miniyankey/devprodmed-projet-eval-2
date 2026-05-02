@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
+
 class User extends Authenticatable
 {
     /**
@@ -48,5 +49,12 @@ class User extends Authenticatable
                     ->whereColumn('reverse.user_id', 'user_likes.liked_user_id')
                     ->whereColumn('reverse.liked_user_id', 'user_likes.user_id');
             });
+    }
+
+    public function hasAnswers(): bool
+    {
+        $totalResponses = $this->hasMany(UserAnswer::class, 'user_id')->count();
+
+        return $totalResponses === 6;
     }
 }

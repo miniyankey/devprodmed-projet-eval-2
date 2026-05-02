@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $posts = Post::orderBy('created_at', 'desc')->with('user')->with('likes')->limit(3)->get();
+
     return view('home', ['posts' => $posts]);
 });
 
@@ -42,11 +43,7 @@ Route::get('/welcome', function () {
 })->middleware('auth');
 
 // Nouvelles routes — auth requise
-Route::middleware('auth')->group(function () {
-    // Réponses aux questions
-    Route::get('/questions', [UserAnswerController::class, 'index']);
-    Route::post('/questions', [UserAnswerController::class, 'store']);
-
+Route::middleware(['auth', 'has.answers'])->group(function () {
     // Profils compatibles
     Route::get('/profiles', [ProfileController::class, 'index']);
 
@@ -56,4 +53,10 @@ Route::middleware('auth')->group(function () {
 
     // Matches
     Route::get('/matches', [MatchController::class, 'index']);
+});
+Route::middleware('auth')->group(function () {
+
+    // Réponses aux questions
+    Route::get('/questions', [UserAnswerController::class, 'index']);
+    Route::post('/questions', [UserAnswerController::class, 'store']);
 });
