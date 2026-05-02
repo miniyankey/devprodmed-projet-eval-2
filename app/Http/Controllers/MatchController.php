@@ -14,7 +14,7 @@ class MatchController extends Controller
     {
         $matches = $request->user()
             ->matches()
-            ->select('users.id', 'users.name', 'users.username')
+            ->select('users.id', 'users.first_name', 'users.username')
             ->get();
 
         return view('matches.index', compact('matches'));
