@@ -21,7 +21,7 @@ return new class extends Migration
         });
 
         // Table des réponses des utilisateurs
-        Schema::create('user_answers', function (Blueprint $table) {
+        Schema::create('user_answer', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('question_id')->constrained('questions')->onDelete('cascade');
@@ -38,7 +38,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('user_answers');
+        Schema::dropIfExists('user_answer');
         Schema::dropIfExists('questions');
     }
 };

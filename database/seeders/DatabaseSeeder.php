@@ -101,7 +101,7 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 // John's answers (a, b, a, b, a, b)
-                DB::table('user_answers')->insert([
+                DB::table('user_answer')->insert([
                     ['user_id' => 1, 'question_id' => 1, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
                     ['user_id' => 1, 'question_id' => 2, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
                     ['user_id' => 1, 'question_id' => 3, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 10:05:00'), 'updated_at' => new \DateTime('2026-02-09 10:05:00')],
@@ -111,7 +111,7 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 // Jane's answers (b, a, b, a, b, a) - différentes de John
-                DB::table('user_answers')->insert([
+                DB::table('user_answer')->insert([
                     ['user_id' => 2, 'question_id' => 1, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
                     ['user_id' => 2, 'question_id' => 2, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
                     ['user_id' => 2, 'question_id' => 3, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 11:05:00'), 'updated_at' => new \DateTime('2026-02-09 11:05:00')],
@@ -121,7 +121,7 @@ class DatabaseSeeder extends Seeder
                 ]);
 
                 // Pierre's answers - IDENTIQUES à John (a, b, a, b, a, b)
-                DB::table('user_answers')->insert([
+                DB::table('user_answer')->insert([
                     ['user_id' => 3, 'question_id' => 1, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
                     ['user_id' => 3, 'question_id' => 2, 'answer' => 'b', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
                     ['user_id' => 3, 'question_id' => 3, 'answer' => 'a', 'created_at' => new \DateTime('2026-02-09 13:05:00'), 'updated_at' => new \DateTime('2026-02-09 13:05:00')],
