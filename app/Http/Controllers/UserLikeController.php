@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Models\UserAnswer;
+use Illuminate\Http\Request;
 
 class UserLikeController extends Controller
 {
@@ -49,10 +49,13 @@ class UserLikeController extends Controller
 
         if ($existingLike) {
             $user->likedUsers()->detach($userLiked->id);
+
+            return redirect('/matches');
         } else {
             $user->likedUsers()->attach($userLiked->id);
+
+            return redirect('/profiles');
         }
 
-        return redirect("/@$username");
     }
 }
