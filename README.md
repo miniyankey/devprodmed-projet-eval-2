@@ -27,7 +27,7 @@ Pour développer et tester le mini-projet en local, voici les étapes à suivre 
 1. Cloner ce dépôt sur votre machine locale :
 
     ```bash
-    git@github.com:miniyankey/devprodmed-projet-eval-2.git
+    git clone git@github.com:miniyankey/devprodmed-projet-eval-2.git
 
     cd devprodmed-projet-eval-2
     ```
@@ -74,3 +74,50 @@ Pour développer et tester le mini-projet en local, voici les étapes à suivre 
     ```
 
 L'application sera accessible à l'adresse <http://localhost:8000>.
+
+
+## Utilisation de l'IA
+
+L'IA (Claude) a été utilisée comme assistant de développement tout au long de l'implémentation
+des fonctionnalités de matching. Elle n'a pas remplacé la logique métier définie au préalable,
+mais a aidé à la traduire en code Laravel correct et cohérent.
+
+### Conception de la structure de données
+
+La structure des relations Eloquent (`likedUsers`, `likedByUsers`, `matches`) a été validée
+et corrigée par l'IA. La relation `matches()` utilisant un `whereExists` pour détecter les
+likes mutuels en une seule requête SQL a notamment été suggérée comme alternative plus
+performante à une approche naïve en deux requêtes.
+
+### Logique de compatibilité dans les contrôleurs
+
+C'est là que l'IA a apporté le plus de valeur. La logique de filtrage des profils compatibles
+dans `ProfileController@index` repose sur :
+
+- La récupération des réponses de l'utilisateur connecté
+- Le chargement en une seule requête de toutes les réponses des autres utilisateurs (`groupBy`)
+- L'intersection des réponses communes avec `intersectByKeys`
+- Le filtrage par réponses identiques avec `every`
+
+Cette approche optimisée pour éviter le problème **N+1** (une requête SQL par utilisateur)
+a été proposée et expliquée par l'IA.
+
+### Vérification de compatibilité avant un like
+
+Dans `UserLikeController@store`, la vérification que deux utilisateurs ont les mêmes réponses
+avant d'autoriser un like a été construite avec l'IA, en réutilisant la même logique
+d'intersection que dans le contrôleur de profils.
+
+### Middleware `has.answers`
+
+La décision de déplacer la vérification des réponses dans un middleware dédié plutôt que
+de la dupliquer dans chaque contrôleur a été suggérée par l'IA, avec la gestion distincte
+des réponses JSON (API) et des redirections (web).
+
+### Ce qui a été fait sans l'IA
+
+- La définition des migrations et de la structure de la base de données
+- Le choix des règles métier (like uniquement depuis le profil, match = like mutuel)
+- L'intégration dans les vues Blade existantes
+- La configuration des scopes Sanctum et des tokens API
+- Le débogage des erreurs (namespaces, guillemets manquants dans la vue)
