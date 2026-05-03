@@ -22,7 +22,7 @@ Retirer son like supprime le match automatiquement.
 
 ## Développement local
 
-Pour développer et tester le mini-projet en local, voici les étapes à suivre :
+Pour développer et tester le projet en local, voici les étapes à suivre :
 
 1. Cloner ce dépôt sur votre machine locale :
 
