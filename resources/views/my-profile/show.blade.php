@@ -8,7 +8,7 @@
     </x-slot>
 
     <article class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 text-center">
-        <div class="flex justify-center mb-6">
+        <div class="flex flex-col sm:flex-row justify-center gap-3 mt-6">
             <div
                 class="w-32 h-32 rounded-full overflow-hidden bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
                 @if ($user->profile_picture)
@@ -49,10 +49,14 @@
                 class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600">
                 {{ __('ui.my_profile.show.actions.view_public') }}
             </a>
+             <a href="{{ url('/tokens') }}"
+                class="px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-md hover:bg-gray-300 dark:hover:bg-gray-600">
+                {{ __('ui.my_profile.show.actions.manage_tokens') }}
+            </a>
             <form method="POST" action="{{ url('/auth/logout') }}" class="inline">
                 @csrf
                 <button type="submit"
-                    class="px-4 py-2 bg-red-600 dark:bg-red-800 text-white rounded-md hover:bg-red-700 dark:hover:bg-red-900 cursor-pointer">
+                    class="w-full px-4 py-2 bg-red-600 dark:bg-red-800 text-white rounded-md hover:bg-red-700 dark:hover:bg-red-900 cursor-pointer">
                     {{ __('ui.my_profile.show.actions.logout') }}
                 </button>
             </form>

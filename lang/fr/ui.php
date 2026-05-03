@@ -33,7 +33,7 @@ return [
         'connected' => 'Cette page est accessible uniquement aux utilisateur.trices connecté.es',
         'name' => 'Bienvenue',
         'title' => 'Bienvenue',
-        'description' => 'Merci de vous être inscrit'
+        'description' => 'Merci de vous être inscrit',
     ],
     'auth' => [
         'login' => [
@@ -110,9 +110,10 @@ return [
             'actions' => [
                 'edit' => 'Modifier le profil',
                 'view_public' => 'Voir le profil public',
+                'manage_tokens' => "Gérer les jetons d'accès",
                 'logout' => 'Se déconnecter',
             ],
-            "biography" => "Bio: :content",
+            'biography' => 'Bio: :content',
         ],
         'form' => [
             'fields' => [
@@ -137,7 +138,7 @@ return [
                     'placeholder' => 'Entrez votre nom',
                 ],
                 'biography' => [
-                    "label" => "Biographie",
+                    'label' => 'Biographie',
                 ],
             ],
             'actions' => [
@@ -205,6 +206,62 @@ return [
             'description' => '":post_title" par :first_name :last_name.',
             'description_without_post_title' => 'Post de :first_name :last_name.',
             'author' => 'Publié par :first_name :last_name',
+        ],
+    ],
+    'tokens' => [
+        'index' => [
+            'title' => "Jetons d'accès",
+            'description' => "Gérez vos jetons d'accès pour :app_name.",
+            'new_token_created' => 'Votre jeton a été créé. Copiez-le maintenant, il ne sera plus affiché.',
+            'no_tokens' => "Aucun jeton d'accès.",
+            'table' => [
+                'name' => 'Nom',
+                'scopes' => 'Permissions',
+                'last_used_at' => 'Dernière utilisation',
+                'expiration_date' => 'Expiration',
+                'never' => 'Jamais',
+                'no_expiry' => 'Sans expiration',
+                'actions' => 'Actions',
+                'delete' => 'Supprimer',
+                'delete_confirm' => 'Souhaitez-vous vraiment supprimer ce jeton ? Cette action est irréversible.',
+            ],
+        ],
+        'create' => [
+            'title' => "Créer un nouveau jeton d'accès",
+            'description' => "Créez un nouveau jeton d'accès pour :app_name.",
+        ],
+        'form' => [
+            'fields' => [
+                'name' => [
+                    'label' => 'Nom',
+                    'placeholder' => 'Nom du jeton',
+                ],
+                'scopes' => [
+                    'label' => 'Permissions',
+                    'options' => [
+                        'posts_create' => 'Créer des posts',
+                        'posts_read' => 'Lire les posts',
+                        'posts_update' => 'Modifier des posts',
+                        'posts_delete' => 'Supprimer des posts',
+                        'profiles_read' => 'Lire des profiles',
+                        'likes_read' => 'Voir vos utilisateurs likés',
+                        'likes_write' => 'Liker des utilisateurs',
+                        'matches_read' => 'Lire vos matches avec d\'autres utilisatuers'
+                    ],
+                ],
+                'content' => [
+                    'label' => 'Contenu',
+                    'placeholder' => 'Contenu du jeton',
+                ],
+                'expiration_date' => [
+                    'label' => 'Expiration (optionnel)',
+                    'help' => 'Laissez vide pour un jeton sans expiration.',
+                ],
+            ],
+            'actions' => [
+                'submit' => 'Créer le jeton',
+                'cancel' => 'Annuler',
+            ],
         ],
     ],
 ];
