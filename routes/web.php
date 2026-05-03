@@ -10,6 +10,7 @@ use App\Http\Controllers\UserAnswerController;
 use App\Http\Controllers\UserLikeController;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TokenController;
 
 Route::get('/', function () {
     $posts = Post::orderBy('created_at', 'desc')->with('user')->with('likes')->limit(3)->get();
@@ -60,3 +61,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/questions', [UserAnswerController::class, 'index']);
     Route::post('/questions', [UserAnswerController::class, 'store']);
 });
+
+Route::resource('tokens', TokenController::class)->only(['index', 'create', 'store', 'destroy'])->middleware('auth');

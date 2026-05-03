@@ -17,9 +17,15 @@ class EnsureUserHasAnswers
     {
         $user = $request->user();
 
-        // Si les préférences ne sont pas définies...
-        if (!$user->hasAnswers()) {
-            // On sauvegarde l'URL voulue en session
+        if (! $user->hasAnswers()) {
+            // API → JSON, pas de redirect
+            if ($request->expectsJson()) {
+                return response()->json([
+                    'message' => 'You must answer all questions first.',
+                ], 403);
+            }
+
+            // Web → redirect
             session()->put('url.intended', $request->fullUrl());
 
             return redirect('/questions');
