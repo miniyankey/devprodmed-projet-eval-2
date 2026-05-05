@@ -3,6 +3,18 @@
 declare(strict_types=1);
 
 return [
+    'questions' => [
+        'index' => [
+            'description'=> 'Répondez aux questions avant de vous lancer',
+            'title' => 'Quiz de :app_name',
+        ],
+        'errors'=>[
+            'missing_answers' => 'Vous n\'avez pas répondu à toutes les questions',
+        ],
+        'form'=>[
+            'submit' => "Envoyer les réponses",
+        ],
+    ],
     'profiles' => [
         'name' => 'Rencontrer des personnes',
         'like' => 'Liker',
