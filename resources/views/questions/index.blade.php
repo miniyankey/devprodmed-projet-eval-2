@@ -1,6 +1,6 @@
 <x-default-layout>
     <x-slot:title>
-        {{ __('ui.questions.index.title') }}
+        {{ __('ui.questions.index.title', ['app_name' => config('app.name')]) }}
     </x-slot>
 
     <x-slot:description>
@@ -8,7 +8,7 @@
     </x-slot>
 
     <h1 class="text-2xl font-bold dark:text-white">
-        {{ __('ui.questions.index.title') }}
+        {{ __('ui.questions.index.title', ['app_name' => config('app.name')]) }}
     </h1>
 
     <p class="mt-4 dark:text-gray-300">

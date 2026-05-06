@@ -17,7 +17,7 @@ return [
     ],
     'profiles' => [
         'name' => 'Rencontrer des personnes',
-        'like' => 'Liker',
+        'like' => '{0} Liker|{1} Ne plus liker',
         'view_profile' => 'Voir le profil',
         'index' => [
             'title' => 'Profils compatibles',

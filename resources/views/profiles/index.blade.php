@@ -23,7 +23,7 @@
 
     <div class="mt-8 space-y-6">
         @forelse ($profiles as $profile)
-            <x-profile-card :profile="$profile" />
+            <x-profile-card :profile="$profile" :liked="0"/>
         @empty
             <p class="text-gray-500 dark:text-gray-400">
                 {{ __('ui.profiles.index.empty') }}

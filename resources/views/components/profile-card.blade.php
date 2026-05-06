@@ -25,7 +25,7 @@
                 @csrf
                 <button type="submit"
                     class="px-4 py-2 bg-teal-600 dark:bg-purple-900 text-white rounded-md hover:bg-teal-700 dark:hover:bg-purple-800">
-                    {{ __('ui.profiles.like') }}
+                    {{ trans_choice('ui.profiles.like', $liked) }}
                 </button>
             </form>
             <a href="{{ url('@' . $profile->username) }}"
